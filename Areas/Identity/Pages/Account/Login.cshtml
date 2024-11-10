@@ -1,0 +1,39 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form id="login-form" method="POST">
+        <h3>Login Form</h3>
+
+        <label asp-for="Input.Identifier">Username Or Password</label>
+        <input asp-for="Input.Identifier" type="text" placeholder="Username" />
+        <span asp-validation-for="Input.Identifier" class="text-danger"></span>
+
+        <label asp-for="Input.Password">Password</label>
+        <input asp-for="Input.Password" type="password" placeholder="Password" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+        <div class="checkbox mb-3">
+            <label asp-for="Input.RememberMe" class="form-label">
+                <input class="form-check-input" asp-for="Input.RememberMe" />
+                @Html.DisplayNameFor(m => m.Input.RememberMe)
+            </label>
+        </div>
+
+        <button type="submit" id="btn-login">Login</button>
+
+    </form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

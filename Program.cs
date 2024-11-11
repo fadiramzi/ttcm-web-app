@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ttcm_mvc.Data;
+using ttcm_mvc.Interfaces;
 using ttcm_mvc.Models;
+using ttcm_mvc.Services;
 
 namespace ttcm_mvc
 {
@@ -34,7 +36,7 @@ namespace ttcm_mvc
             builder.Services.AddRazorPages();
 
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddScoped<ICategoryCRUD, CategoryService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

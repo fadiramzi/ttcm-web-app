@@ -1,0 +1,49 @@
+﻿@using ttcm_mvc.Models.DTOs;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model PaginationList<CategoryDTOResponse> // Model
+
+    <form method="get" asp-action="Index" class="d-flex flex-row">
+        <div class="input-group m-2">
+            <input type="text" name="searchQuery" class="form-control" id="searchInput" placeholder="Type to search..." value="@ViewBag.searchQuery">
+        </div>
+        <button class="btn btn-secondary">Search</button>
+    </form>
+
+<a  class="btn btn-primary" asp-action="Create">New</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(CategoryDTOResponse c in Model.Items)
+        {
+            <tr>
+                <th scope="row">@c.Id</th>
+                <td>@c.Name</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" asp-route-pageIndex="@(Model.PageIndex - 1)">Previous</a></li>
+        @for(int i = 1; i<= Model.TotalPages;i++)
+        {
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-pageIndex="@i">@i</a></li>
+
+        }
+
+        <li class="page-item"><a class="page-link" asp-route-pageIndex="@(Model.PageIndex + 1)">Next</a></li>
+    </ul>
+</nav>

@@ -18,5 +18,22 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #ebeced !important;
+}
+
+.sidenav{
+    width:250px;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+}
+.content-section{
+    margin-left:250px;
+}
+
+.my-header
+{
+    padding:15px;
 }
